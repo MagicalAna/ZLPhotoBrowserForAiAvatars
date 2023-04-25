@@ -102,7 +102,7 @@ public class ZLPhotoPreviewSheet: UIView {
     
     private var arrDataSources: [ZLPhotoModel] = []
     
-    var arrSelectedModels: [ZLPhotoModel] = []
+    private var arrSelectedModels: [ZLPhotoModel] = []
     
     private var preview = false
     
@@ -275,7 +275,8 @@ public class ZLPhotoPreviewSheet: UIView {
         show(preview: true, animate: animate, sender: sender)
     }
     
-    @objc public func showPhotoLibrary(sender: UIViewController) {
+    @objc public func showPhotoLibrary(sender: UIViewController, models: [ZLPhotoModel]) {
+        self.arrSelectedModels = models
         show(preview: false, animate: false, sender: sender)
     }
     
@@ -616,7 +617,7 @@ public class ZLPhotoPreviewSheet: UIView {
                 })
             }
             
-//            self?.arrSelectedModels.removeAll()
+            self?.arrSelectedModels.removeAll()
             self?.arrDataSources.removeAll()
         }
         
@@ -674,7 +675,6 @@ public class ZLPhotoPreviewSheet: UIView {
                 let tvc = ZLThumbnailViewController(albumList: cameraRoll)
                 nav.pushViewController(tvc, animated: true)
             }
-            nav.arrSelectedModels = self.arrSelectedModels
             if deviceIsiPad() {
                 self.sender?.present(nav, animated: true, completion: nil)
             } else {
