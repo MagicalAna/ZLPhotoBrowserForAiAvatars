@@ -616,7 +616,7 @@ public class ZLPhotoPreviewSheet: UIView {
                 })
             }
             
-            self?.arrSelectedModels.removeAll()
+//            self?.arrSelectedModels.removeAll()
             self?.arrDataSources.removeAll()
         }
         
