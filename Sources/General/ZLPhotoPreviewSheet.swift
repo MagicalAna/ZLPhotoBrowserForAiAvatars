@@ -102,7 +102,7 @@ public class ZLPhotoPreviewSheet: UIView {
     
     private var arrDataSources: [ZLPhotoModel] = []
     
-    private var arrSelectedModels: [ZLPhotoModel] = []
+    var arrSelectedModels: [ZLPhotoModel] = []
     
     private var preview = false
     
@@ -674,6 +674,7 @@ public class ZLPhotoPreviewSheet: UIView {
                 let tvc = ZLThumbnailViewController(albumList: cameraRoll)
                 nav.pushViewController(tvc, animated: true)
             }
+            nav.arrSelectedModels = self.arrSelectedModels
             if deviceIsiPad() {
                 self.sender?.present(nav, animated: true, completion: nil)
             } else {
